@@ -1,0 +1,653 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Freight Big Pro";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  z-index: 999;
+}
+
+#loader h1 {
+  font-size: 5vw;
+  word-spacing: 0.1vw;
+  line-height: 3.8vw;
+  font-family: "Freight Big Pro";
+  font-weight: 100;
+  position: relative;
+  z-index: 9;
+}
+
+#yellow1 {
+  height: 100%;
+  width: 100%;
+  background-color: #f5e41b;
+  position: absolute;
+  z-index: 8;
+}
+
+#yellow2 {
+  height: 100%;
+  width: 100%;
+  background-color: #f5e41b;
+  position: absolute;
+  z-index: 7;
+}
+
+#loader video {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 6;
+}
+
+#nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 10px;
+  z-index: 1;
+}
+
+#nav svg {
+  height: 15px;
+}
+
+.nav_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  overflow: hidden;
+}
+
+.nav_container a {
+  text-decoration: none;
+  color: black;
+  overflow: hidden;
+}
+
+.nav_container i {
+  font-weight: 100;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+
+.nav_container a span {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#page1,
+#page2,
+#page3 {
+  background-color: #f5e41b;
+}
+
+#page1 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#page1 h1 {
+  font-size: 5vw;
+  line-height: 3.8vw;
+  font-family: "Freight Big Pro";
+  font-weight: 100;
+  word-spacing: 0.1vw;
+}
+
+#page2 {
+  background-color: black;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.elem {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+#page2 .elem:nth-child(1) .blur {
+  position: absolute;
+  width: 62%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #f5e41b 18%,
+    #f5e41b 82%,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+}
+
+#page2 .elem:nth-child(2) .blur {
+  position: absolute;
+  width: 52.5%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #f5e41b 18%,
+    #f5e41b 82%,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+}
+
+#page2 .elem:nth-child(3) .blur {
+  position: absolute;
+  width: 52.5%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #f5e41b 18%,
+    #f5e41b 82%,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+}
+
+#page2 .elem:nth-child(4) .blur {
+  position: absolute;
+  width: 84%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #f5e41b 18%,
+    #f5e41b 82%,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+}
+
+#page2 .elem:nth-child(5) .blur {
+  position: absolute;
+  width: 52.5%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: 8;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #f5e41b 18%,
+    #f5e41b 82%,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+}
+
+.elem h2 {
+  font-size: 7vw;
+  text-transform: uppercase;
+  font-weight: 100;
+  position: relative;
+  z-index: 9;
+  line-height: 5.2vw;
+}
+
+.elem .moving {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -45%) scaleY(0);
+  background-color: #f5e41b;
+  width: 100%;
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+.elem .moving .moving-in {
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: moving;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.elem .moving .moving-in h5 {
+  color: black;
+  display: inline-block;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 5px 15px;
+  font-size: 17px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition-delay: 0.08s;
+}
+
+@keyframes moving {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.elem:hover .moving {
+  transform: translate(0, -45%) scaleY(1);
+}
+
+.elem:hover .moving h5 {
+  opacity: 1;
+}
+
+.elem:hover h2 {
+  font-style: italic;
+  color: rgb(212, 13, 13);
+}
+
+#page2 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.1s ease;
+}
+
+#page3 {
+  background-color: #fff;
+}
+
+.image-container {
+  padding: 30px 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.image-column-1,
+.image-column-2,
+.image-column-3 {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.image-div {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.image-div .overlay {
+  transition: all 0.1s ease;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.image-div .thumbnail {
+  position: absolute;
+  transition: all 0.1s ease;
+  object-fit: cover !important;
+  height: 100%;
+  width: 100%;
+}
+
+.image-div:hover .thumbnail {
+  opacity: 0;
+}
+
+.image-div:hover .overlay {
+  opacity: 1;
+}
+
+.image-column-1 .image-div:nth-child(1) {
+  height: 40vw;
+  background-color: #fff;
+}
+
+.image-column-1 .image-div:nth-child(2) {
+  height: 33vw;
+}
+
+.image-column-2 .image-div:nth-child(1) {
+  height: 35vw;
+}
+
+.image-column-2 .image-div:nth-child(2) {
+  height: 50vw;
+}
+
+.image-column-3 .image-div:nth-child(1) {
+  height: 45vw;
+}
+
+.image-column-3 .image-div:nth-child(2) {
+  height: 28vw;
+}
+
+#backToTop {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2vw;
+}
+
+#backToTop h3 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+#backToTop h3 i {
+  animation: up 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes up {
+  from {
+    transform: translateY(-0.25rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+#page4 {
+  height: 80vh;
+}
+
+.contactUs {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.9vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactUs p {
+  font-size: 3.9rem;
+  text-align: center;
+  font-weight: 100;
+  line-height: 2.75rem;
+}
+
+.contactUs button {
+  background-color: #f5f5f5;
+  color: #707070;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.contactUs button:hover {
+  color: rgba(0, 0, 0, 0.76);
+}
+
+.footer {
+  background-color: #f5e41b;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.footer_logo_container p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 0.125rem;
+}
+
+.same_footer_social p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 0.125rem;
+}
+
+.footer_socials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.footer_email {
+  width: 100%;
+  grid-column: 1/4;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.footer_email input {
+  height: 100%;
+  background-color: transparent;
+  width: 90%;
+  border: none;
+  outline: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  border-bottom: 1.25px solid black;
+}
+
+input::placeholder {
+  color: black;
+}
+
+.footer_send_button {
+  height: 99%;
+  width: 10%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #f5e41b;
+  border: none;
+  border-bottom: 1.25px solid black;
+  display: flex;
+  justify-content: end;
+}
+
+.footer_send_button svg {
+  height: 70%;
+}
+
+@media screen and (max-width: 769px) {
+  .footer_send_button {
+    height: 20px;
+  }
+  #page1 h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+    line-height: 1.7rem;
+  }
+  .nav_container {
+    gap: 1.8rem;
+  }
+  #nav svg {
+    height: 0.75rem;
+  }
+  .nav_container a span {
+    font-size: 0.9rem;
+  }
+  .nav_container i {
+    font-size: 0.9rem;
+  }
+  .contactUs p {
+    font-size: 2.25rem;
+    line-height: 1.6rem;
+  }
+  .contactUs button {
+    font-size: 0.75rem;
+    padding: 3px 9px;
+  }
+  .footer_logo_container p {
+    font-size: 1rem;
+  }
+  .same_footer_social p {
+    font-size: 1rem;
+  }
+  .footer_email input {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  #backToTop h3 {
+    font-size: 0.8rem;
+  }
+
+  #backToTop h3 i {
+    animation: up 0.8s ease-in-out infinite alternate;
+  }
+
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-column-1,
+  .image-column-2,
+  .image-column-3 {
+    height: auto;
+    width: 100%;
+  }
+  .image-column-1 .image-div:nth-child(1) {
+    height: 90vw;
+    width: auto;
+    background-color: #fff;
+  }
+
+  .image-column-1 .image-div:nth-child(2) {
+    height: 50vw;
+  }
+
+  .image-column-2 .image-div:nth-child(1) {
+    height: 45vw;
+  }
+
+  .image-column-2 .image-div:nth-child(2) {
+    height: 120vw;
+  }
+
+  .image-column-3 .image-div:nth-child(1) {
+    height: 80vw;
+  }
+
+  .image-column-3 .image-div:nth-child(2) {
+    height: 40vw;
+  }
+  .footer_logo_container {
+    display: none;
+  }
+  .footer_socials_container {
+    width: 100%;
+  }
+  .footer_socials {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer_email {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .nav_container {
+    gap: 1.5rem;
+  }
+  #nav svg {
+    height: 0.6rem;
+  }
+  .nav_container a span {
+    font-size: 0.8rem;
+  }
+  .nav_container i {
+    font-size: 0.8rem;
+  }
+  .contactUs p {
+    font-size: 1.8rem;
+    line-height: 1.25rem;
+  }
+  .contactUs button {
+    font-size: 0.6rem;
+    padding: 3px 9px;
+  }
+  .footer_logo_container {
+    display: none;
+  }
+  .footer_socials_container {
+    width: 100%;
+  }
+  .footer_socials {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer_email {
+    width: 100%;
+  }
+  #page4 {
+    height: 60vh;
+  }
+  #page1 h1 {
+    font-size: 1.75rem;
+    font-weight: 200;
+    line-height: 1.25rem;
+  }
+}
